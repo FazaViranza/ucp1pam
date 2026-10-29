@@ -1,4 +1,4 @@
-package com.example.taxoffice
+package com.example.ucp1.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import com.example.ucp1.R
 
 @Composable
 fun Page2(
@@ -20,10 +21,9 @@ fun Page2(
     status: String,
     onBack: () -> Unit
 ) {
-    val paddingScreen =
-        dimensionResource(R.dimens.padding_screen)
-    val spacingMedium =
-        dimensionResource(R.dimens.spacing_medium)
+    val paddingScreen = dimensionResource(R.dimen.padding_screen)
+    val spacingMedium = dimensionResource(R.dimen.spacing_medium)
+    val spacingSmall = dimensionResource(R.dimen.spacing_small)
 
     Column(
         modifier = Modifier
@@ -40,41 +40,14 @@ fun Page2(
 
         HorizontalDivider()
 
-        DataRow(
-            label = stringResource(R.string.label_nama),
-            value = nama
-        )
+        DataRow(stringResource(R.string.label_nama), nama)
+        DataRow(stringResource(R.string.label_npwp), npwp)
+        DataRow(stringResource(R.string.label_alamat), alamat)
+        DataRow(stringResource(R.string.label_jenis_pajak), jenisPajak)
+        DataRow(stringResource(R.string.label_tanggal), tanggal)
+        DataRow(stringResource(R.string.status_pembayaran), status)
 
-        DataRow(
-            label = stringResource(R.string.label_npwp),
-            value = npwp
-        )
-
-        DataRow(
-            label = stringResource(R.string.label_alamat),
-            value = alamat
-        )
-
-        DataRow(
-            label = stringResource(R.string.label_jenis_pajak),
-            value = jenisPajak
-        )
-
-        DataRow(
-            label = stringResource(R.string.label_tanggal),
-            value = tanggal
-        )
-
-        DataRow(
-            label = stringResource(R.string.status_pembayaran),
-            value = status
-        )
-
-        Spacer(
-            modifier = Modifier.height(
-                dimensionResource(R.dimen.spacing_small)
-            )
-        )
+        Spacer(modifier = Modifier.height(spacingSmall))
 
         Button(
             onClick = onBack,
@@ -92,14 +65,10 @@ private fun DataRow(
 ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(
-            dimensionResource(R.dimens.spacing_small)
+            dimensionResource(R.dimen.spacing_small)
         )
     ) {
-        Text(
-            text = label,
-            style = MaterialTheme.typography.labelLarge
-        )
-
+        Text(text = label, style = MaterialTheme.typography.labelLarge)
         Text(
             text = value.ifBlank {
                 stringResource(R.string.data_tidak_tersedia)
