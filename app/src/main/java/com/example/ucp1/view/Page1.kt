@@ -1,4 +1,4 @@
-package com.example.taxoffice
+package com.example.ucp1.view
 
 import android.app.DatePickerDialog
 import androidx.compose.foundation.layout.*
@@ -13,11 +13,11 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.ucp1.R
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-import androidx.compose.ui.unit.sp
 
 @Composable
 fun Page1(
@@ -34,22 +34,16 @@ fun Page1(
     var error by remember { mutableStateOf(false) }
 
     val context = LocalContext.current
-
-    val paddingScreen =
-        dimensionResource(R.dimen.padding_screen)
-    val spacingSmall =
-        dimensionResource(R.dimen.spacing_small)
-    val spacingMedium =
-        dimensionResource(R.dimen.spacing_medium)
-    val spacingLarge =
-        dimensionResource(R.dimen.spacing_large)
+    val paddingScreen = dimensionResource(R.dimen.padding_screen)
+    val spacingSmall = dimensionResource(R.dimen.spacing_small)
+    val spacingMedium = dimensionResource(R.dimen.spacing_medium)
 
     val formValid = nama.isNotBlank() &&
-            npwp.isNotBlank() &&
-            alamat.isNotBlank() &&
-            jenisPajak.isNotBlank() &&
-            tanggal.isNotBlank() &&
-            status.isNotBlank()
+        npwp.isNotBlank() &&
+        alamat.isNotBlank() &&
+        jenisPajak.isNotBlank() &&
+        tanggal.isNotBlank() &&
+        status.isNotBlank()
 
     Column(
         modifier = Modifier
@@ -60,28 +54,21 @@ fun Page1(
     ) {
         Text(
             text = stringResource(R.string.page_title),
-            fontSize = dimensionResource(R.dimen.text_title).value.let {
-                androidx.compose.ui.unit.sp(it)
-            },
+            fontSize = dimensionResource(R.dimen.text_title).value.sp,
             fontWeight = FontWeight.Bold,
             color = colorResource(R.color.tax_primary)
         )
 
         Text(
             text = stringResource(R.string.page_subtitle),
-            fontSize = dimensionResource(R.dimen.text_subtitle).value.let {
-                androidx.compose.ui.unit.sp(it)
-            }
+            fontSize = dimensionResource(R.dimen.text_subtitle).value.sp
         )
 
         HorizontalDivider()
 
         OutlinedTextField(
             value = nama,
-            onValueChange = {
-                nama = it
-                error = false
-            },
+            onValueChange = { nama = it; error = false },
             label = { Text(stringResource(R.string.label_nama)) },
             placeholder = { Text(stringResource(R.string.hint_nama)) },
             modifier = Modifier.fillMaxWidth(),
@@ -90,10 +77,7 @@ fun Page1(
 
         OutlinedTextField(
             value = npwp,
-            onValueChange = {
-                npwp = it
-                error = false
-            },
+            onValueChange = { npwp = it; error = false },
             label = { Text(stringResource(R.string.label_npwp)) },
             placeholder = { Text(stringResource(R.string.hint_npwp)) },
             modifier = Modifier.fillMaxWidth(),
@@ -102,17 +86,13 @@ fun Page1(
 
         OutlinedTextField(
             value = alamat,
-            onValueChange = {
-                alamat = it
-                error = false
-            },
+            onValueChange = { alamat = it; error = false },
             label = { Text(stringResource(R.string.label_alamat)) },
             placeholder = { Text(stringResource(R.string.hint_alamat)) },
             modifier = Modifier.fillMaxWidth(),
             minLines = 2
         )
 
-        // Row: dropdown jenis pajak dan tanggal pelayanan
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(spacingSmall),
@@ -120,19 +100,14 @@ fun Page1(
         ) {
             JenisPajakDropdown(
                 selected = jenisPajak,
-                onSelected = {
-                    jenisPajak = it
-                    error = false
-                },
+                onSelected = { jenisPajak = it; error = false },
                 modifier = Modifier.weight(1f)
             )
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
                     text = stringResource(R.string.label_tanggal),
-                    fontSize = dimensionResource(R.dimen.text_body).value.let {
-                        androidx.compose.ui.unit.sp(it)
-                    }
+                    fontSize = dimensionResource(R.dimen.text_body).value.sp
                 )
 
                 Spacer(modifier = Modifier.height(spacingSmall))
@@ -140,18 +115,15 @@ fun Page1(
                 OutlinedButton(
                     onClick = {
                         val calendar = Calendar.getInstance()
-
                         DatePickerDialog(
                             context,
                             { _, year, month, day ->
                                 val selected = Calendar.getInstance()
                                 selected.set(year, month, day)
-
                                 tanggal = SimpleDateFormat(
                                     "dd/MM/yyyy",
                                     Locale.getDefault()
                                 ).format(selected.time)
-
                                 error = false
                             },
                             calendar.get(Calendar.YEAR),
@@ -172,9 +144,7 @@ fun Page1(
 
         Text(
             text = stringResource(R.string.status_pembayaran),
-            fontSize = dimensionResource(R.dimen.text_body).value.let {
-                androidx.compose.ui.unit.sp(it)
-            },
+            fontSize = dimensionResource(R.dimen.text_body).value.sp,
             fontWeight = FontWeight.Medium
         )
 
@@ -186,18 +156,11 @@ fun Page1(
 
         statuses.forEach { statusRes ->
             val label = stringResource(statusRes)
-
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 RadioButton(
                     selected = status == label,
-                    onClick = {
-                        status = label
-                        error = false
-                    }
+                    onClick = { status = label; error = false }
                 )
-
                 Text(text = label)
             }
         }
@@ -214,14 +177,7 @@ fun Page1(
         Button(
             onClick = {
                 if (formValid) {
-                    onSubmit(
-                        nama,
-                        npwp,
-                        alamat,
-                        jenisPajak,
-                        tanggal,
-                        status
-                    )
+                    onSubmit(nama, npwp, alamat, jenisPajak, tanggal, status)
                 } else {
                     error = true
                 }
@@ -250,13 +206,12 @@ private fun JenisPajakDropdown(
     )
 
     Column(modifier = modifier) {
-        Text(text = stringResource(R.string.label_jenis_pajak))
-
-        Spacer(
-            modifier = Modifier.height(
-                dimensionResource(R.dimen.spacing_small)
-            )
+        Text(
+            text = stringResource(R.string.label_jenis_pajak),
+            fontSize = dimensionResource(R.dimen.text_body).value.sp
         )
+
+        Spacer(modifier = Modifier.height(dimensionResource(R.dimen.spacing_small)))
 
         Box {
             OutlinedButton(
