@@ -1,12 +1,11 @@
 package com.example.ucp1
 
-package com.example.taxoffice
-
 import androidx.compose.runtime.*
-import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.ucp1.view.Page1
+import com.example.ucp1.view.Page2
 
 enum class Navigasi {
     Formulir,
@@ -52,9 +51,7 @@ fun DataApp() {
                 jenisPajak = jenisPajak,
                 tanggal = tanggal,
                 status = status,
-                onBack = {
-                    navController.popBackStack()
-                }
+                onBack = { navController.popBackStack() }
             )
         }
     }
