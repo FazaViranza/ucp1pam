@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">ucp1</string>
+
+    <string name="label_jenis_pajak">Jenis Pajak</string>
+    <string name="label_tanggal">Tanggal Pelayanan</string>
+    <string name="pilih_jenis_pajak">Pilih jenis pajak</string>
+    <string name="pilih_tanggal">Pilih tanggal</string>
+
+    <string name="pajak_pph">PPh</string>
+    <string name="pajak_ppn">PPN</string>
+    <string name="pajak_pbb">PBB</string>
+
+    <string name="status_pembayaran">Status Pembayaran</string>
+    <string name="status_diproses">Diproses</string>
+    <string name="status_selesai">Selesai</string>
+    <string name="status_ditunda">Ditunda</string>
+
+    <string name="button_submit">Submit</string>
+    <string name="button_kembali">Kembali</string>
+    <string name="page_detail_title">Data Wajib Pajak</string>
+    <string name="error_form">Lengkapi semua data terlebih dahulu</string>
+    <string name="data_tidak_tersedia">-</string>
+</resources>
