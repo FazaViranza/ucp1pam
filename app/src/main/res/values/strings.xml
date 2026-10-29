@@ -1,11 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ucp1</string>
+    <string name="app_name">Tax Office</string>
+    <string name="page_title">Administrasi Perkantoran Pajak</string>
+    <string name="page_subtitle">Formulir pendataan wajib pajak</string>
+
+    <string name="label_nama">Nama Wajib Pajak</string>
+    <string name="hint_nama">Masukkan nama wajib pajak</string>
+    <string name="label_npwp">NPWP</string>
+    <string name="hint_npwp">Masukkan NPWP</string>
+    <string name="label_alamat">Alamat</string>
+    <string name="hint_alamat">Masukkan alamat</string>
 
     <string name="label_jenis_pajak">Jenis Pajak</string>
     <string name="label_tanggal">Tanggal Pelayanan</string>
     <string name="pilih_jenis_pajak">Pilih jenis pajak</string>
     <string name="pilih_tanggal">Pilih tanggal</string>
-
     <string name="pajak_pph">PPh</string>
     <string name="pajak_ppn">PPN</string>
     <string name="pajak_pbb">PBB</string>
